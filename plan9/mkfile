@@ -1,33 +1,11 @@
-CC = 9c
-LD = 9l
-INCLUDE= /usr/lib/plan9/include
-LIB = /usr/lib/plan9/lib
-ARCHLIB = /usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/libgcc.a
+%.$O: %.c
+	9c $stem.c
 
-SRCS = main.c
-OBJS = main.$O
-BIN = main
-INPUT = input.txt
-SAMPLE = sample.txt
+%: %.o
+	9l -o $target $stem.$O
 
-# Default target
-all: $BIN
+run: $stem
+	./$stem $INPUT
 
-# Compile the source code
-main.$O: main.c
-	$CC -I$INCLUDE -o $@ main.c
-
-# Link the object file to create the executable
-$BIN: $OBJS
-	$LD -L$LIB -L$ARCHLIB -o $@ $OBJS
-
-run: $BIN
-	./$BIN $INPUT
-
-sample: $BIN
-	./$BIN $SAMPLE
-	
-# Clean up intermediate and binary files
 clean:
-	rm -f $OBJS $BIN
-
+	rm -f *.o a.out

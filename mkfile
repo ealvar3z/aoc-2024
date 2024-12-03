@@ -1,17 +1,9 @@
-GO=go
-SOURCES=`{ls day*.go}
-BINARIES=`{echo $SOURCES | sed 's/\.go//g'}
+%: %.go
+	go build -o $stem $stem.go
 
-all: $BINARIES
+run: $stem
+	./$stem $INPUT
 
-build_%: %.go
-	$GO build -o $target $prereq
-	
 clean:
-	rm -f $BINARIES
+	rm -f day* *.out
 
-run_input_%: build_%
-	./$prereq input.txt
-
-run_sample_%: build_%
-	./$prereq sample.txt
