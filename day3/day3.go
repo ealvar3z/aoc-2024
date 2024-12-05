@@ -106,7 +106,6 @@ func newParser(input string) *Parser {
 }
 
 func (p *Parser) Parse() int {
-	// Patterns for toggle and multiplication instructions
 	toggle := regexp.MustCompile(`\b(do\(\)|don't\(\)|undo\(\))`)
 	mult := regexp.MustCompile(`mul\((\d+),(\d+)\)`)
 
@@ -114,11 +113,13 @@ func (p *Parser) Parse() int {
 		remainingInput := p.input[p.position:]
 
 		// Match valid tokens
-		if toggleMatch := toggle.FindStringIndex(remainingInput); toggleMatch != nil && toggleMatch[0] == 0 {
+		if toggleMatch := toggle.FindStringIndex(remainingInput); toggleMatch != nil && 
+							toggleMatch[0] == 0 {
 			token := remainingInput[toggleMatch[0]:toggleMatch[1]]
 			p.toggler(token)
 			p.position += toggleMatch[1]
-		} else if mulMatch := mult.FindStringIndex(remainingInput); mulMatch != nil && mulMatch[0] == 0 {
+		} else if mulMatch := mult.FindStringIndex(remainingInput); mulMatch != nil && 
+													mulMatch[0] == 0 {
 			token := remainingInput[mulMatch[0]:mulMatch[1]]
 			if p.goAhead {
 				p.multiplicate(token, mult)
@@ -131,7 +132,6 @@ func (p *Parser) Parse() int {
 	}
 	return p.result
 }
-
 
 func (p *Parser) multiplicate(tok string, pat *regexp.Regexp) {
 	matches := pat.FindStringSubmatch(tok)
@@ -151,7 +151,7 @@ func (p *Parser) multiplicate(tok string, pat *regexp.Regexp) {
 		Y <= 999 {
 		p.result += X * Y
 		fmt.Printf("Processed mul(%d,%d) = %d, Result so far: %d\n", 
-			X, Y, X*Y, p.result) // Debugging output
+			X, Y, X*Y, p.result)
 
 	}
 }
@@ -181,7 +181,6 @@ func slurp(fileName string) (string, error) {
 
 	return sb.String(), buf.Err()
 }
-
 
 func main() {
 	if len(os.Args) < 2 {
