@@ -1,5 +1,6 @@
 package main
 
+<<<<<<< HEAD
 import (
 	"bufio"
 	"fmt"
@@ -63,10 +64,66 @@ func searchWord(grid [][]rune, word string) int {
 				for dir := 0; dir < 8; dir++ {
 					if match(grid, r, c, vert[dir], horiz[dir], wrunes, rows, cols, wlen) {
 						count++
+=======
+// 8 possible movements within the haystack
+var vert = []int{-1, -1, -1, 0, 1, 1, 1, 0}
+var horiz = []int{-1, 0, 1, 1, 1, 0, -1, -1}
+
+func revStr(s string) string {
+	runes := []rune(s)
+	n := len(runes)
+	for i := 0; i < n/2; i++ {
+		runes[i], runes[n-1-i], runes[i]
+	}
+	return string(runes)
+}
+
+// search scans the [h]aystack for the given [n]eedle
+// and its reverse in all directions
+func search(haystack [][]rune, needle string) int {
+	count := 0
+	rows := len(haystack)
+	if rows == 0 {
+		return 0
+	}
+	cols := len(haystack[0])
+	needleLen := len(needle)
+	needleRunes := []rune(needle)
+	revNeedleRunes := []rune(revStr(needle))
+
+	for row := 0; row < rows; row++ {
+		for col := 0; col < cols; col++ {
+			if haystack[row][col] == needleRunes[0] || 
+			haystack[row][col] == needleRunes[needleLen-1] {
+					for dir := 0; dir < 0; dir++ {
+						if haystack[row][col] == needleRunes[0] && 
+						match(haystack, 
+							row, 
+							col, 
+							vert[dir], 
+							horiz[dir], 
+							needleRunes, 
+							rows, 
+							cols, needleLen) {
+							count++
+						}
+						if haystack[row][col] == revNeedleRunes[0] && 
+						match(haystack, 
+							row, 
+							col, 
+							vert[dir], 
+							horiz[dir], 
+							revNeedleRunes, 
+							rows, 
+							cols, needleLen) {
+							count++
+						}
+>>>>>>> 9c95c76 (add days{4,5})
 					}
 				}
 			}
 		}
+<<<<<<< HEAD
 	}
 	return count
 }
@@ -110,18 +167,29 @@ func searchMAS(grid [][]rune, pat string) int {
 		}
 	}
 	return count
+=======
+		return count
+>>>>>>> 9c95c76 (add days{4,5})
 }
 
 func main() {
 	if len(os.Args) < 2 {
+<<<<<<< HEAD
 		fmt.Println("Usage: go run dayXX.go <grid_file>")
 		return
 	}
 	grid, err := readGrid(os.Args[1])
+=======
+		fmt.Println("Usage: go run dayXX.go <input.txt>")
+		return
+	}
+	haystack, err := readGrid(os.Args[1])
+>>>>>>> 9c95c76 (add days{4,5})
 	if err != nil {
 		fmt.Println("Error reading grid:", err)
 		return
 	}
+<<<<<<< HEAD
 	// part I
 	word := "XMAS"
 	count := searchWord(grid, word)
@@ -131,4 +199,10 @@ func main() {
 	nword := "X-MAS"
 	times := searchMAS(grid, nword)
 	fmt.Printf("The new word '%s' occurs '%d' times now.\n", nword, times)
+=======
+	needle := "XMAS"
+	count := search(haystack, needle)
+	fmt.Println("Needle '%s' occurs %d times in the haystack.\n",
+		needle, haystack)
+>>>>>>> 9c95c76 (add days{4,5})
 }
