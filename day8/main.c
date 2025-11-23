@@ -1,5 +1,5 @@
 // day08.c - AoC 2024 Day 8: Resonant Collinearity (Parts 1 & 2)
-// Compile: cc -std=c23 -O2 day08.c -o day08
+// Compile: cc -std=c2x -O2 -I../lib main.c -o day08
 // Run:     ./day08 < input.txt
 
 #include <stdio.h>
@@ -23,11 +23,9 @@ int main(void) {
     int width  = -1;
     int height = 0;
 
-    // Read the grid from stdin
     while (fgets(line, sizeof line, stdin)) {
         size_t len = strlen(line);
 
-        // Strip trailing newline / carriage return
         while (len > 0 && (line[len - 1] == '\n' || line[len - 1] == '\r')) {
             line[--len] = '\0';
         }
@@ -171,11 +169,8 @@ int main(void) {
         }
     }
 
-    // Print results:
-    // First line: Part 1
-    // Second line: Part 2
-    printf("%d\n", count1);
-    printf("%d\n", count2);
+    printf("Part 1: %d\n", count1);
+    printf("Part 2: %d\n", count2);
 
     return 0;
 }

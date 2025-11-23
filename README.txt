@@ -3,7 +3,10 @@ Advent of Code 2024
 
 Advent of Code solutions:
 
+    - C (C23 standard)
 	- Go
+    - Fortran
+    - LuaJIT
 	- Plan9 C
 	- Plan9 rc
 
