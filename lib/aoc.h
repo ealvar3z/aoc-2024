@@ -1,7 +1,5 @@
-#include <cstddef>
-#include <cstdlib>
 #include <stddef.h>
-#include <stdint.h>
+#include <stdlib.h>
 #include <stdbool.h>
 #include <stdlib.h>
 #include <string.h>
@@ -58,7 +56,7 @@ aoc_align(size_t x, size_t a)
 
 /* alloc from arena; align at least to alignof(max_align_t) */
 [[nodiscard]] static inline void *
-aoc_arena_alloc(struct aoc_arena a, size_t n)
+aoc_arena_alloc(struct aoc_arena *a, size_t n)
 {
   if (!a || !a->p || n == 0) return NULL;
 
