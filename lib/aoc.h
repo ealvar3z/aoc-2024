@@ -8,6 +8,17 @@
 #ifndef AOC_H
 #define AOC_H
 
+void
+check(int cond, const char *expr, int line)
+{
+    if (!cond) {
+        fprintf(stderr, "assertion failed: %s (line %d)\n", expr, line);
+        exit(1);
+    }
+}
+
+#define ASSERT(c) check((c), #c, __LINE__)
+
 struct aoc_buf {
   char *p;
   size_t n;
@@ -167,8 +178,8 @@ split_lines(char *buf,
   }
 
   if (*s) {
-    char *e = s + strlen(s);
-    if (e > s && e[-1] == '\r') e[-1] == '\0';
+    // char *e = s + strlen(s);
+    // if (e > s && e[-1] == '\r') e[-1] == '\0';
     if (n < cap) lines[n++] = s;
   }
   return n;
