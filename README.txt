@@ -5,13 +5,13 @@ Advent of Code solutions:
 
   - C (C23 standard)
   - C++
-	- Go
+  - Go
   - Fortran
   - LuaJIT
   - Perl
-	- Plan9 C
-	- Plan9 rc
-	- Python
+  - Plan9 C
+  - Plan9 rc
+  - Python
 
 Usage:
 ------
@@ -26,4 +26,4 @@ Dependencies:
 -------------
 This project requires Plan 9 tools for the `mk` build system:  
 
-	-  `plan9port` or `9base`.
+	-  `plan9por ` or `9base`.
