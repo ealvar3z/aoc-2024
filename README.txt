@@ -3,29 +3,20 @@ Advent of Code 2024
 
 Advent of Code solutions:
 
-    - C (C23 standard)
+  - C (C23 standard)
+  - C++
 	- Go
-    - Fortran
-    - LuaJIT
+  - Fortran
+  - LuaJIT
+  - Perl
 	- Plan9 C
 	- Plan9 rc
+	- Python
 
 Usage:
 ------
 To build all solutions:
-    mk all
-
-To build a specific day (e.g., day1.go):
-    mk build_day1
-
-To run a specific day with input.txt:
-    mk run_input_day1
-
-To run a specific day with sample.txt:
-    mk run_sample_day1
-
-To clean up all built binaries:
-    mk clean
+	run the mkfile or Makefile in each dir || the req'd interpreter
 
 Input Files:
 ------------
