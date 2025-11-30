@@ -16,7 +16,7 @@ Advent of Code solutions:
 Usage:
 ------
 To build all solutions:
-	run the mkfile or Makefile in each dir || the req'd interpreter
+	- run the mkfile or Makefile in each dir || the req'd interpreter
 
 Input Files:
 ------------
@@ -26,4 +26,4 @@ Dependencies:
 -------------
 This project requires Plan 9 tools for the `mk` build system:  
 
-	-  `plan9por ` or `9base`.
+	- `plan9port` or `9base`.
